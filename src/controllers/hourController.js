@@ -16,7 +16,7 @@ router.post('/register', async(req, res) => {
 
         console.log(date);
 
-        if(await Hours.findOne({ day: date }))
+        if(await Hours.findOne({ userId: req.body.userId, day: date }))
             return res.status(400).send({ message: 'Já tem horário cadastrado para este dia' });
 
         const hours = await Hours.create(req.body);

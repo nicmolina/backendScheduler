@@ -4,7 +4,6 @@ const HoursSchema = new mongoose.Schema({
     userId: {
         type: String,
         require: true,
-        unique: true
     },
     day: {
         type: Date,
