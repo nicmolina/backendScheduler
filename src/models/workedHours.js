@@ -3,12 +3,12 @@ const mongoose = require('../database');
 const HoursSchema = new mongoose.Schema({
     userId: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     day: {
         type: Date,
         require: true,
-        unique: true
     },
     hours: {
         type: Number,
