@@ -12,12 +12,12 @@ router.use(authMiddleware);
 
 router.post('/register', async(req, res) => {
     try{
-        const date = new Date(req.body.day)
 
-        console.log(date);
+        req.body.day = (new Date(req.body.day)).toDateString();
 
-        if(await Hours.findOne({ userId: req.body.userId, day: date }))
+        if(await Hours.findOne({ userId: req.body.userId, day: req.body.day }))
             return res.status(400).send({ message: 'Já tem horário cadastrado para este dia' });
+
 
         const hours = await Hours.create(req.body);
 
@@ -29,10 +29,13 @@ router.post('/register', async(req, res) => {
 
 router.post('/specificday', async (req, res) => {
     try{
+        req.body.day = (new Date(req.body.day)).toDateString();
+
         Hours.findOne({ userId: req.body.userId, day: req.body.day }, function(err, obj){
             if(err){
                 return res.send(err);
             } else {
+                
                 return res.send(obj);
             }   
         })
