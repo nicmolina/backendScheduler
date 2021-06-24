@@ -16,7 +16,7 @@ router.post('/register', async(req, res) => {
 
         return res.send({hours});
     } catch (err) {
-        return res.status(400).send({ error: `${err}` });
+        return res.status(400).send({ message: `${err}` });
     }
 });
 
@@ -30,7 +30,7 @@ router.post('/specificday', async (req, res) => {
             }   
         })
     } catch (err) {
-        return res.status(400).send({ error: `${err}` })
+        return res.status(400).send({ message: `${err}` })
     }
 })
 
@@ -44,7 +44,7 @@ router.get('/all', async (req, res) => {
             }   
         })
     } catch (err) {
-        return res.status(400).send({ error: `${err}` })
+        return res.status(400).send({ message: `${err}` })
     }
 })
 
